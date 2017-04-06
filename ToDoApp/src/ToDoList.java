@@ -1,6 +1,7 @@
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,10 +11,16 @@ public class ToDoList {
 
   List<String> todolistFile = null;
   List<String> usageFile = null;
+  Path todolistPath = Paths.get("todolist.txt");
+  String [] args;
+
+  public ToDoList(String[] args) {
+    this.args = args;
+  }
+
 
   void ToDoList() {
     try {
-      Path todolistPath = Paths.get("todolist.txt");
       todolistFile = Files.readAllLines(todolistPath);
 
     } catch (Exception e) {
@@ -39,6 +46,18 @@ public class ToDoList {
     }
     for (int i = 0; i < usageFile.size(); i++) {
       System.out.println(usageFile.get(i));
+    }
+  }
+
+  void addTodolist() {
+    todolistPath = Paths.get("todolist.txt");
+    List<String> newTask;
+    try {
+      newTask = Files.readAllLines(todolistPath);
+      newTask.add(newTask.size(), args[1]);
+      Files.write(todolistPath,newTask);
+    } catch (Exception e) {
+      System.out.println("Uh-oh, could not write the file!");
     }
   }
 
