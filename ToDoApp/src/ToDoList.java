@@ -20,9 +20,12 @@ public class ToDoList {
       e.printStackTrace();
       System.out.println("Uh-oh, could not read the file!");
     }
+    if ( todolistFile.size() == 0 ) {
+      System.out.println("No todos for today! :)");
+    } else
       for (int i = 0; i <todolistFile.size() ; i++) {
-      System.out.println((i+1) + " - " + todolistFile.get(i));
-    }
+        System.out.println((i + 1) + " - " + todolistFile.get(i));
+      }
   }
 
   void Usage() {
@@ -38,6 +41,5 @@ public class ToDoList {
       System.out.println(usageFile.get(i));
     }
   }
-
 
 }
