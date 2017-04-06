@@ -54,7 +54,7 @@ public class ToDoList {
     List<String> newTask;
     try {
       newTask = Files.readAllLines(todolistPath);
-      newTask.add(newTask.size(), args[1]);
+      newTask.add(newTask.size(), "[ ] " + args[1]);
       Files.write(todolistPath,newTask);
     } catch (Exception e) {
       System.out.println("Unable to add: no task provided");
@@ -69,7 +69,7 @@ public class ToDoList {
       removeTask.remove(Integer.parseInt(args[1])-1);
       Files.write(todolistPath,removeTask);
     } catch (Exception e) {
-      System.out.println("Uh-oh, could not read the file!");
+      System.out.println("Unable to remove: no index provided");
     }
   }
 

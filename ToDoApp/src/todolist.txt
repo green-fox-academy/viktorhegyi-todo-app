@@ -1,3 +1,4 @@
-Feed the monkey
-Do homework
-Get milk
+[ ] Get milk
+[ ] Feed the monkey
+[ ] Do homework
+[ ] Go running
