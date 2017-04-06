@@ -7,16 +7,13 @@ public class App {
 
   public static void main(String[] args) {
 
-    ToDoList toDoList;
-    Usage usage;
+    ToDoList toDoList = new ToDoList();
 
     if ( args.length == 0 ) {
-      usage = new Usage();
-        usage.toString();
+      toDoList.Usage();
     } else
       if ( Arrays.toString(args).contains("l")) {
-      toDoList = new ToDoList();
-        toDoList.toString();
+      toDoList.ToDoList();
     }
   }
 

@@ -9,8 +9,9 @@ import java.util.List;
 public class ToDoList {
 
   List<String> todolistFile = null;
+  List<String> usageFile = null;
 
-  public ToDoList() {
+  void ToDoList() {
     try {
       Path todolistPath = Paths.get("todolist.txt");
       todolistFile = Files.readAllLines(todolistPath);
@@ -20,8 +21,23 @@ public class ToDoList {
       System.out.println("Uh-oh, could not read the file!");
     }
       for (int i = 0; i <todolistFile.size() ; i++) {
-      System.out.println((i+1) + " " + todolistFile.get(i));
+      System.out.println((i+1) + " - " + todolistFile.get(i));
     }
   }
+
+  void Usage() {
+    try {
+      Path usagePath = Paths.get("usage.txt");
+      usageFile = Files.readAllLines(usagePath);
+
+    } catch (Exception e) {
+      e.printStackTrace();
+      System.out.println("Uh-oh, could not read the file!");
+    }
+    for (int i = 0; i < usageFile.size(); i++) {
+      System.out.println(usageFile.get(i));
+    }
+  }
+
 
 }
