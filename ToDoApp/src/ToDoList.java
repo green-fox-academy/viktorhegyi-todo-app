@@ -57,7 +57,7 @@ public class ToDoList {
       newTask.add(newTask.size(), args[1]);
       Files.write(todolistPath,newTask);
     } catch (Exception e) {
-      System.out.println("Uh-oh, could not write the file!");
+      System.out.println("Unable to add: no task provided");
     }
   }
 
