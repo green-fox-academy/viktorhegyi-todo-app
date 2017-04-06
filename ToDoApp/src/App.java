@@ -10,19 +10,21 @@ import java.util.List;
 public class App {
 
   public static void main(String[] args) {
-    Path filePath = Paths.get("src/usage.txt");
-    List<String> lines = null ;
+    Path filePath = Paths.get("usage.txt");
 
-    try {
-      lines = Files.readAllLines(filePath);
-    } catch (Exception e) {
-      e.printStackTrace();
-      System.out.println("Uh-oh, could not read the file!");
+    List<String> lines = null;
+    if( args.length == 0 )
+      try {
+        lines = Files.readAllLines(filePath);
+
+      } catch (Exception e) {
+        e.printStackTrace();
+        System.out.println("Uh-oh, could not read the file!");
+      }
+
+      for (int i = 0; i < lines.size(); i++) {
+        System.out.println(lines.get(i));
+      }
+
     }
-
-    for (int i = 0; i <lines.size() ; i++) {
-      System.out.println(lines.get(i));
-    }
-
   }
-}
