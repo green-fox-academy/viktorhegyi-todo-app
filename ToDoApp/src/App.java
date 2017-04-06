@@ -15,6 +15,8 @@ public class App {
       toDoList.ToDoList();
     } else if ( args[0].contains("-a")) {
       toDoList.addTodolist();
+    } else if ( args[0].contains("-r")) {
+      toDoList.removeTodolist();
     }
   }
 

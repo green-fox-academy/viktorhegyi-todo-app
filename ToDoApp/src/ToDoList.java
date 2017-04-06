@@ -61,4 +61,16 @@ public class ToDoList {
     }
   }
 
+  void removeTodolist() {
+    todolistPath = Paths.get("todolist.txt");
+    List<String> removeTask;
+    try {
+      removeTask = Files.readAllLines(todolistPath);
+      removeTask.remove(Integer.parseInt(args[1])-1);
+      Files.write(todolistPath,removeTask);
+    } catch (Exception e) {
+      System.out.println("Uh-oh, could not read the file!");
+    }
+  }
+
 }
