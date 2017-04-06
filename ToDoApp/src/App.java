@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 /**
  * Created by hegyi on 2017-04-06.
  */
@@ -17,6 +15,8 @@ public class App {
       toDoList.addTodolist();
     } else if ( args[0].contains("-r")) {
       toDoList.removeTodolist();
+    } else if ( args[0].contains("")) {
+      toDoList.Usage();
     }
   }
 
