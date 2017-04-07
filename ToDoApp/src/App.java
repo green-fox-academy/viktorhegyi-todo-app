@@ -16,6 +16,7 @@ public class App {
     } else if ( args[0].contains("-r")) {
       toDoList.removeTodolist();
     } else if ( args[0].contains("")) {
+      System.out.println("\n Unsupported argument\n");
       toDoList.Usage();
     }
   }
