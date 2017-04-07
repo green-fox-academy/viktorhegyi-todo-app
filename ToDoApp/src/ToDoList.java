@@ -67,16 +67,18 @@ public class ToDoList {
     todolistPath = Paths.get("todolist.txt");
     List<String> removeTask;
     try {
+      removeTask = Files.readAllLines(todolistPath);
       if (args.length == 1) {
         System.out.println("Unable to remove: no index provided");
+      } else if ( Integer.parseInt(args[1]) > removeTask.size()) {
+        System.out.println("Unable to remove: index is out of bound");
       } else {
-      removeTask = Files.readAllLines(todolistPath);
       removeTask.remove(Integer.parseInt(args[1]) - 1);
       Files.write(todolistPath,removeTask);
         }
     } catch (Exception e) {
-      System.out.println("Uh-oh, could not read the file!");
-    }
+      System.out.println("Unable to remove: index is not a number");
+      }
   }
 
   void checkTask() {
