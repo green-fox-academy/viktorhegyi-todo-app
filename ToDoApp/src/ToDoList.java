@@ -21,7 +21,6 @@ public class ToDoList {
   void ToDoList() {
     try {
       todolistFile = Files.readAllLines(todolistPath);
-
     } catch (Exception e) {
       e.printStackTrace();
       System.out.println("Uh-oh, could not read the file!");
@@ -38,7 +37,6 @@ public class ToDoList {
     try {
       Path usagePath = Paths.get("usage.txt");
       usageFile = Files.readAllLines(usagePath);
-
     } catch (Exception e) {
       e.printStackTrace();
       System.out.println("Uh-oh, could not read the file!");
@@ -51,12 +49,17 @@ public class ToDoList {
   void addTodolist() {
     todolistPath = Paths.get("todolist.txt");
     List<String> newTask;
+
     try {
+      if (args.length == 1) {
+        System.out.println("Unable to remove: no task provided");
+      } else {
       newTask = Files.readAllLines(todolistPath);
       newTask.add(newTask.size(), "[ ] " + args[1]);
       Files.write(todolistPath,newTask);
-    } catch (Exception e) {
-      System.out.println("Unable to add: no task provided");
+        }
+      } catch (Exception e) {
+      System.out.println("Uh-oh, could not read the file!");
     }
   }
 
@@ -64,11 +67,15 @@ public class ToDoList {
     todolistPath = Paths.get("todolist.txt");
     List<String> removeTask;
     try {
+      if (args.length == 1) {
+        System.out.println("Unable to remove: no index provided");
+      } else {
       removeTask = Files.readAllLines(todolistPath);
       removeTask.remove(Integer.parseInt(args[1]) - 1);
       Files.write(todolistPath,removeTask);
+        }
     } catch (Exception e) {
-      System.out.println("Unable to remove: no index provided");
+      System.out.println("Uh-oh, could not read the file!");
     }
   }
 
@@ -76,12 +83,19 @@ public class ToDoList {
     todolistPath = Paths.get("todolist.txt");
     List<String> checkedTask;
     String doneTask;
+
     try {
       checkedTask = Files.readAllLines(todolistPath);
+      if (args.length == 1) {
+        System.out.println("Unable to check: no index provided");
+        } else if ( Integer.parseInt(args[1]) > checkedTask.size()) {
+        System.out.println("Unable to check: index is out of bound");
+        } else {
       doneTask = checkedTask.get(Integer.parseInt(args[1]) - 1);
       String newString = doneTask.replaceFirst(" ", "x");
       checkedTask.set((Integer.parseInt(args[1]) - 1), newString);
       Files.write(todolistPath, checkedTask);
+        }
     } catch (Exception e) {
       System.out.println("Uh-oh, could not read the file!");
     }
