@@ -1,4 +1,5 @@
-[ ] Get milk
+[x] Get milk
 [ ] Feed the monkey
 [ ] Do homework
-[ ] Go running
+[x] Go running
+[x] Walk the dog

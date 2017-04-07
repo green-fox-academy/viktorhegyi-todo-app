@@ -18,7 +18,6 @@ public class ToDoList {
     this.args = args;
   }
 
-
   void ToDoList() {
     try {
       todolistFile = Files.readAllLines(todolistPath);
@@ -35,7 +34,7 @@ public class ToDoList {
       }
   }
 
-  void Usage() {
+  void usage() {
     try {
       Path usagePath = Paths.get("usage.txt");
       usageFile = Files.readAllLines(usagePath);
@@ -66,12 +65,26 @@ public class ToDoList {
     List<String> removeTask;
     try {
       removeTask = Files.readAllLines(todolistPath);
-      removeTask.remove(Integer.parseInt(args[1])-1);
+      removeTask.remove(Integer.parseInt(args[1]) - 1);
       Files.write(todolistPath,removeTask);
     } catch (Exception e) {
       System.out.println("Unable to remove: no index provided");
     }
   }
 
+  void checkTask() {
+    todolistPath = Paths.get("todolist.txt");
+    List<String> checkedTask;
+    String doneTask;
+    try {
+      checkedTask = Files.readAllLines(todolistPath);
+      doneTask = checkedTask.get(Integer.parseInt(args[1]) - 1);
+      String newString = doneTask.replaceFirst(" ", "x");
+      checkedTask.set((Integer.parseInt(args[1]) - 1), newString);
+      Files.write(todolistPath, checkedTask);
+    } catch (Exception e) {
+      System.out.println("Uh-oh, could not read the file!");
+    }
+  }
 
 }
